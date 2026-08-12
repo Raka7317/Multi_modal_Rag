@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 Multimodal RAG
+#  Multimodal RAG
 
 **One retrieval pipeline for text, PDF, JSON, CSV, images, audio, and video — hybrid search, cross-encoder reranking, RAGAS-evaluated, with short & long-term memory, deployed on AWS.**
 
