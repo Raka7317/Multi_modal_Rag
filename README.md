@@ -43,7 +43,7 @@ Answer quality is continuously measured with **RAGAS**.
 | 🖼️ **Embedding** | Single CLIP model (`ViT-B-32`) for text *and* images |
 | 🧵 **Orchestration** | LangGraph state machine |
 | 🧠 **Memory** | Short-term: LangGraph checkpointer · Long-term: MongoDB |
-| 📊 **Evaluation** | RAGAS — faithfulness, answer relevancy, context precision/recall |
+| 📊 **Evaluation** | Deepeval — faithfulness, answer relevancy, context precision/recall |
 | 🚀 **Serving** | FastAPI + Docker |
 | ☁️ **Deployment** | ECS Fargate, ALB, CloudFront, Route53, S3, OpenSearch Vector Engine |
 | 📦 **Size** | ~911 lines of Python across 26 files |
