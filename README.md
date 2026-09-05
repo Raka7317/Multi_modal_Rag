@@ -38,26 +38,26 @@ Answer quality is continuously measured with **RAGAS**.
 
 | | |
 |---|---|
-| 🗂️ **Modalities** | text · pdf · json · csv · image · audio · video |
-| 🔎 **Retrieval** | Hybrid (dense kNN + BM25, score-fused) → cross-encoder rerank |
-| 🖼️ **Embedding** | Single CLIP model (`ViT-B-32`) for text *and* images |
-| 🧵 **Orchestration** | LangGraph state machine |
-| 🧠 **Memory** | Short-term: LangGraph checkpointer · Long-term: MongoDB |
-| 📊 **Evaluation** | Ragas — faithfulness, answer relevancy, context precision/recall |
-| 🚀 **Serving** | FastAPI + Docker |
-| ☁️ **Deployment** | ECS Fargate, ALB, CloudFront, Route53, S3, OpenSearch Vector Engine |
-| 📦 **Size** | ~911 lines of Python across 26 files |
+|  **Modalities** | text · pdf · json · csv · image · audio · video |
+|  **Retrieval** | Hybrid (dense kNN + BM25, score-fused) → cross-encoder rerank |
+|  **Embedding** | Single CLIP model (`ViT-B-32`) for text *and* images |
+|  **Orchestration** | LangGraph state machine |
+|  **Memory** | Short-term: LangGraph checkpointer · Long-term: MongoDB |
+|  **Evaluation** | Ragas — faithfulness, answer relevancy, context precision/recall |
+|  **Serving** | FastAPI + Docker |
+|  **Deployment** | ECS Fargate, ALB, CloudFront, Route53, S3, OpenSearch Vector Engine |
+|  **Size** | ~911 lines of Python across 26 files |
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 <details open>
 <summary><strong>End-to-end data flow</strong></summary>
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion["📥 Ingestion Pipeline"]
+    subgraph Ingestion[" Ingestion Pipeline"]
         F[Raw file] --> L{Loader router}
         L -->|.txt/.md| T[TextLoader]
         L -->|.pdf| P[PDFLoader<br/>text + page renders]
@@ -73,7 +73,7 @@ flowchart TD
         F -.raw file.-> S3[(Amazon S3)]
     end
 
-    subgraph QueryTime["💬 Query-time Graph — LangGraph"]
+    subgraph QueryTime[" Query-time Graph — LangGraph"]
         Q[User question] --> LM[load_memory]
         LM -->|user_id| MG[(MongoDB<br/>long-term facts)]
         LM --> RT[retrieve: hybrid search]
@@ -86,7 +86,7 @@ flowchart TD
         LM -.thread_id.-> CP[(LangGraph Checkpointer<br/>short-term memory)]
     end
 
-    subgraph Eval["📊 Evaluation"]
+    subgraph Eval[" Evaluation"]
         ANS --> RG[RAGAS: faithfulness,<br/>relevancy, precision, recall]
     end
 ```
@@ -112,7 +112,7 @@ flowchart LR
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 multimodal-rag/
@@ -155,7 +155,7 @@ multimodal-rag/
 
 ---
 
-## 🧩 Modules in Detail
+##  Modules in Detail
 
 <details>
 <summary><b>1. Loaders — <code>app/loaders/</code></b></summary><br>
@@ -302,7 +302,7 @@ FastAPI app — see full [API Reference](#-api-reference) below.
 
 ---
 
-## ⚡ Quickstart
+##  Quickstart
 
 ```bash
 git clone <this-repo>
